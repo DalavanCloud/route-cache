@@ -105,5 +105,9 @@ module.exports.removeCache = function(url) {
   cacheStore.del(url);
 };
 
+module.exports.clear = function(){
+  cacheStore.clear();
+}
+
 
 module.exports.cacheStore = cacheStore;
