@@ -7,9 +7,12 @@ var cacheStore = new Eidetic({
 var queues = {};
 var redirects = {};
 
-module.exports.cacheSeconds = function(ttl) {
+module.exports.cacheSeconds = function(ttl, enabled) {
 
   return function(req, res, next) {
+    
+    if(!enabled) return next();
+    
     var key = req.originalUrl;
     if (redirects[key]) return res.redirect(redirects[key]);
 
