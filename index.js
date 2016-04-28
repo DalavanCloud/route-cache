@@ -11,7 +11,7 @@ module.exports.cacheSeconds = function(ttl, enabled) {
 
   return function(req, res, next) {
     
-    if(!enabled) return next();
+    if(!req.project.flags.speedyRender) return next();
     
     var key = req.originalUrl;
     if (redirects[key]) return res.redirect(redirects[key]);
